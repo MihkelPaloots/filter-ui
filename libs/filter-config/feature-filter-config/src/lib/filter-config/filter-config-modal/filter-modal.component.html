@@ -1,0 +1,13 @@
+<h2 mat-dialog-title>Filter</h2>
+<filter-config-form [filterModel]="filter$ | async"
+                    [criteriaConfigs]="criteriaConfigs$ |async"
+                    (formChange)="updateFilter($event)"
+                    (addCriteria)="addCriteria()"
+                    (removeCriteria)="removeCriteria($event)"
+                    (criteriaChange)="updateCriteria($event.criteria, $event.index)">
+
+</filter-config-form>
+<mat-dialog-actions>
+    <button mat-button mat-dialog-close (click)="close()">Close</button>
+    <button mat-button mat-dialog-close (click)="saveFilter()">Save</button>
+</mat-dialog-actions>

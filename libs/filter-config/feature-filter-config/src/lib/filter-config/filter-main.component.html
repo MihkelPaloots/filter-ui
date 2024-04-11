@@ -1,0 +1,43 @@
+<div class="page-container">
+    <div class="controls">
+        <mat-slide-toggle (click)="changeModalMode()">Modal Mode</mat-slide-toggle>
+        <button mat-raised-button color="primary" (click)="openFilterDialog()">Add Filter</button>
+    </div>
+
+    <filter-filter-modal *ngIf="openFilterConfig" (closeForm)="openFilterConfig= false"></filter-filter-modal>
+
+    <div class="table-container">
+        <mat-table #table [dataSource]="(filters$ | async) ?? []" class="mat-elevation-z8">
+
+            <ng-container matColumnDef="id">
+                <mat-header-cell *matHeaderCellDef> ID</mat-header-cell>
+                <mat-cell *matCellDef="let filter"> {{filter.id}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="name">
+                <mat-header-cell *matHeaderCellDef> Name</mat-header-cell>
+                <mat-cell *matCellDef="let filter"> {{filter.name}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="criterias">
+                <mat-header-cell *matHeaderCellDef> Criterias </mat-header-cell>
+                <mat-cell *matCellDef="let filter">
+                    <ng-container *ngIf="filter.criterias && filter.criterias.length;">
+                        <ul>
+                            <li *ngFor="let criteria of filter.criterias">
+                                <strong>Type:</strong> {{criteria.type}},
+                                <strong>Condition:</strong> {{criteria.condition}},
+                                <strong>Value:</strong> {{criteria.value}}
+                            </li>
+                        </ul>
+                    </ng-container>
+                </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+        </mat-table>
+    </div>
+</div>
+

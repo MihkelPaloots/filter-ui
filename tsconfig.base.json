@@ -14,7 +14,16 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@filter-ui/domain": ["libs/domain/src/index.ts"],
+      "@filter-ui/feature": ["libs/feature/src/index.ts"],
+      "@filter/filter-config/domain": [
+        "libs/filter-config/domain/src/index.ts"
+      ],
+      "@filter/filter-config/feature-filter-config": [
+        "libs/filter-config/feature-filter-config/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

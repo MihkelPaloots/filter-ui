@@ -1,0 +1,18 @@
+<form [formGroup]="filterForm" formChanges [model]="filterModel"
+      (formChanged)="updateFilter($event)">
+    <mat-dialog-content class="content">
+        <mat-form-field appearance="fill">
+            <mat-label>Filter name</mat-label>
+            <input matInput formControlName="name" placeholder="My Filter">
+        </mat-form-field>
+        <div *ngFor="let criteria of filterModel?.criterias; let i = index" class="criteria-row">
+            <filter-criteria-form [criteriaModel]="criteria"
+                                  [criteriaOptions]="criteriaConfigs"
+                                  (formChange)="updateCriteria($event, i)"
+                                  (removeCriteria)="removeCriteriaAt(i)">
+            </filter-criteria-form>
+        </div>
+        <button mat-mini-fab color="primary" (click)="addNewCriteria()">+</button>
+    </mat-dialog-content>
+</form>
+

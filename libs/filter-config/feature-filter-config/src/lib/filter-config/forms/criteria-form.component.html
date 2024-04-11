@@ -1,0 +1,42 @@
+<form [formGroup]="form" formChanges [model]="criteriaModel"
+      (formChanged)="updateCriteria($event)">
+    <div class="fields-container">
+            <mat-form-field appearance="fill">
+                <mat-label>Criteria Type</mat-label>
+                <mat-select formControlName="type">
+                    <mat-option *ngFor="let config of criteriaOptions" [value]="config.name">
+                        {{ config.name }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Criteria Option</mat-label>
+            <mat-select formControlName="condition">
+                <mat-option *ngFor="let option of (criteriaOptions | findCriteriaConfig:criteriaModel?.type).conditionOptions" [value]="option">
+                    {{ option }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <ng-container *ngIf="(criteriaOptions | findCriteriaConfig:criteriaModel?.type).dataType === DataType.Date; else nonDateField">
+            <mat-form-field appearance="fill">
+                <mat-label>Choose a date</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="value">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </ng-container>
+
+        <ng-template #nonDateField>
+            <mat-form-field appearance="fill">
+                <mat-label>Value</mat-label>
+                <input matInput formControlName="value" [type]="(criteriaOptions | findCriteriaConfig:criteriaModel?.type).dataType === DataType.Number ? 'number' : 'text'">
+            </mat-form-field>
+        </ng-template>
+
+        <button mat-mini-fab color="warn" (click)="remove()">-</button>
+    </div>
+</form>
+

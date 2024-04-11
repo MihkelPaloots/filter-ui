@@ -15,6 +15,13 @@
               {
                 "sourceTag": "*",
                 "onlyDependOnLibsWithTags": ["*"]
+              },
+              {
+                "sourceTag": "domain:filter-config",
+                "onlyDependOnLibsWithTags": [
+                  "domain:filter-config",
+                  "domain:shared"
+                ]
               }
             ]
           }
