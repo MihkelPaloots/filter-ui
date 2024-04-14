@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { FilterFormModel } from './filter-form.model';
+import { FilterConfigFormModel } from './filter-config-form.model';
 import { Filter, CriteriaConfig, Criteria } from '@filter/filter-config/domain';
 
 
@@ -21,13 +21,13 @@ export class ConfigFormComponent {
     criteria: Criteria;
   }>();
 
-  filterForm: FilterFormModel;
+  filterForm: FilterConfigFormModel;
 
   constructor(private formBuilder: FormBuilder) {
     this.filterForm = this.formBuilder.group({
       name: [ '' ],
       criterias: undefined
-    }) as FilterFormModel;
+    }) as FilterConfigFormModel;
   }
 
   updateCriteria(formValue: Criteria, index: number) {

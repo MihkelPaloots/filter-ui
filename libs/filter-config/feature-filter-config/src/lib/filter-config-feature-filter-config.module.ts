@@ -14,7 +14,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 
 import { MatRadioModule } from '@angular/material/radio';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CriteriaFormComponent } from './filter-config/forms/criteria-form.component';
+import { CriteriaFormComponent } from './filter-config/criteria-form/criteria-form.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { UtilModule } from '../../../../util/util.module';
 import { ConfigFormComponent } from './filter-config/filter-form/config-form.component';

@@ -11,27 +11,21 @@
     gap: 20px;
 }
 
-/* Button and Toggle Styles for consistency */
 button.mat-raised-button {
-    margin-left: auto; /* Pushes the button to the right */
+    margin-left: auto;
 }
 
-.mat-slide-toggle {
-    /* No specific styles needed here, but you might adjust for alignment or size */
-}
 
 .mat-table {
-    width: 100%; /* Ensure the table takes up the container width */
+    width: 100%;
 }
 
-/* Adjust cell padding for more space */
 .mat-cell, .mat-header-cell {
     padding: 15px;
 }
 
-/* Styling header cells for emphasis */
 .mat-header-cell {
-    color: #3f51b5; /* Example color: Material Indigo */
+    color: #3f51b5;
     font-size: 16px;
     font-weight: 500;
 }
